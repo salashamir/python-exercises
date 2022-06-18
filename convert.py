@@ -15,7 +15,24 @@ def convert_temp(unit_in, unit_out, temp):
       convert_temp("f", "c", 212) => 100.0
     """
 
-    # YOUR CODE HERE
+    # return invalid if units invalid
+    if unit_in.lower() != "f" and unit_in.lower() != "c":
+        return f'Invalid unit {unit_in}'
+    if unit_out.lower() != "f" and unit_out.lower() != "c":
+        return f'Invalid unit {unit_out}'
+    
+    # if units are the same, return same number
+    if unit_in.lower() == unit_out.lower():
+        return temp;
+
+    # if unit_in is c
+    if unit_in.lower() == "c" and unit_out.lower() == 'f':
+        return (9/5) * temp + 32
+
+    # if unit_in is f
+    if unit_in.lower() == "f" and unit_out.lower() == 'c':
+        return (temp - 32) * 5/9
+    
 
 
 print("c", "f", 0, convert_temp("c", "f", 0), "should be 32.0")
